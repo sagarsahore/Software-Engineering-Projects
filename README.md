@@ -1,6 +1,6 @@
 <!-- 🎓 Course Banner -->
 <p align="center">
-  <img src="https://via.placeholder.com/1000x250.png?text=MSE800+-+Professional+Software+Engineering" alt="Course Banner" />
+  <img src="Week 1/Banner.jpg" alt="Course Banner" />
 </p>
 
 <h1 align="center">📘 MSE800 - Professional Software Engineering</h1>

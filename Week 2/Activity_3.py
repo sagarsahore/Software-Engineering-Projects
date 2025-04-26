@@ -7,12 +7,24 @@ class Factorial:
         for i in range(1, self.num1 + 1):
             result *= i
         return result
-        
+    
+    def check_Prime(self):  # Prime check method added
+        if self.num1 < 2:  # 0 and 1 are not prime numbers
+            return False
+        for i in range(2, int(self.num1 ** 0.5) + 1):
+            if self.num1 % i == 0:
+                return False
+        return True
+
     def display(self):  # Display method corrected
         print("Factorial of", self.num1, "is", self.factorial())
+        if self.check_Prime():
+            print(f"{self.num1} is a prime number.")
+        else:
+            print(f"{self.num1} is not a prime number.")
 
 # Instantiate the class with number 5
-number1 = Factorial(5)
+number1 = Factorial(10)
 
 # Call the display method to show the result
 number1.display()

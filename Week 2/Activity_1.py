@@ -1,25 +1,31 @@
 #Activity 1: Write a code to use round , abs and square functions to calculate the 
 # area of a rectangle land try to use both Jupyter Notebook and Py
- 
+def square(x):
+    return x ** 2  
 
-length = 24.45
-breadth = 20.47
-area = length * breadth; 
+# Get user input for dimensions
+length = float(input("Enter the length of the rectangle: "))
+breadth = float(input("Enter the breadth of the rectangle: "))
 
- # Round area to 2 decimal places
-area = round(area, 2)
+# Ensure positive dimensions using abs
+length = abs(length)
+breadth = abs(breadth)
 
-print("Area of rectangle is: ", area)
-# Output: Area of rectangle is: 50.0
+# Calculate area
+area = length * breadth
 
-# Area of rectangle using round functiton with 4 decimals
-area = round(length * breadth, 4)
-print("Area of rectangle with 4 decimals is : ", area)
+# Round area to 2 and 4 decimal places
+area_2dp = round(area, 2)
+area_4dp = round(area, 4)
 
-# area of rectangle using
-length_sq = round(length ** 2, 2)
-breadth_sq = round(pow(breadth, 2), 2)
+# Calculate and round squared values
+length_sq = round(square(length), 2)
+breadth_sq = round(square(breadth), 2)
 
-# Display the results
+# Output
+print("\n✅ Rectangle Calculation Summary:")
+print(f"Length: {length}, Breadth: {breadth}")
+print(f"Area (2 decimals): {area_2dp}")
+print(f"Area (4 decimals): {area_4dp}")
 print(f"Length squared: {length_sq}")
-print(f"breadth squared: {breadth_sq}")
+print(f"Breadth squared: {breadth_sq}")

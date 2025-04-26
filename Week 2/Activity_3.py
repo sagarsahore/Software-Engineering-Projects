@@ -11,7 +11,8 @@ class Factorial:
     def check_Prime(self):  # Prime check method added
         if self.num1 < 2:  # 0 and 1 are not prime numbers
             return False
-        for i in range(2, int(self.num1 ** 0.5) + 1):
+        for i in range(2, int(self.num1 ** 0.5) + 1): # Check up to the square root of num1 and int to make it not show decimal values
+            # Check if num1 is divisible by i 
             if self.num1 % i == 0:
                 return False
         return True

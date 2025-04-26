@@ -1,5 +1,6 @@
 #Activity 1: Write a code to use round , abs and square functions to calculate the 
 # area of a rectangle land try to use both Jupyter Notebook and Py
+
 def square(x):
     return x ** 2  
 
@@ -29,3 +30,12 @@ print(f"Area (2 decimals): {area_2dp}")
 print(f"Area (4 decimals): {area_4dp}")
 print(f"Length squared: {length_sq}")
 print(f"Breadth squared: {breadth_sq}")
+
+#professor's code
+num1, num2 = input("Enter two numbers separated by a space: ").split()
+num1 = float(num1)
+num2 = float(num2)
+def area(num1, num2):
+    Area_land = num1 * num2
+    print("Area of land:", Area_land)
+    return Area_land

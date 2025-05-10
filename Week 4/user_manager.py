@@ -44,3 +44,30 @@ def advanced_search_user(user_id, name):
     rows = cursor.fetchall()
     conn.close()
     return rows
+
+def add_course(course_id, name, unit):
+    conn = create_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("INSERT INTO courses (id, name, unit) VALUES (?, ?, ?)", (course_id, name, unit))
+        conn.commit()
+        print(" Course added.")
+    except sqlite3.IntegrityError:
+        print(" Course ID must be unique.")
+    conn.close()
+
+def search_course_with_user(course_id, user_name):
+    conn = create_connection()
+    cursor = conn.cursor()
+    # You are combining data from users and courses here; assuming no relationship yet, just independent search
+    cursor.execute("SELECT * FROM users WHERE name LIKE ?", ('%' + user_name + '%',))
+    users = cursor.fetchall()
+    
+    cursor.execute("SELECT * FROM courses WHERE id = ?", (course_id,))
+    course = cursor.fetchone()
+    
+    conn.close()
+    return users, course
+# This function is for searching courses with a specific user name
+
+

@@ -70,4 +70,34 @@ def search_course_with_user(course_id, user_name):
     return users, course
 # This function is for searching courses with a specific user name
 
+def assign_course_to_user(user_id, course_id):
+    conn = create_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("INSERT INTO user_courses (user_id, course_id) VALUES (?, ?)", (user_id, course_id))
+        conn.commit()
+        print("Course assigned to user.")  # Fixed indentation
+    except sqlite3.IntegrityError:
+        print("Assignment already exists or invalid IDs.")
+    conn.close()
 
+def get_courses_for_user(user_id):
+    conn = create_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute('''
+            SELECT c.id, c.name, c.unit
+            FROM courses c
+            JOIN user_courses uc ON c.id = uc.course_id
+            WHERE uc.user_id = ?
+        ''', (user_id,))
+        courses = cursor.fetchall()
+        if not courses:
+            print(f"No courses found for user ID {user_id}.")
+        return courses
+    except sqlite3.Error as e:
+        print(f"Database error: {e}")
+        return []
+    finally:
+        conn.close()
+# This function is for getting courses for a specific user

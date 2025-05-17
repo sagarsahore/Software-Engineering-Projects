@@ -29,3 +29,19 @@ def create_course_table():
     ''')
     conn.commit()
     conn.close()
+
+def create_user_courses_table():
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_courses (
+            user_id INTEGER,
+            course_id INTEGER,
+            PRIMARY KEY (user_id, course_id),
+            FOREIGN KEY (user_id) REFERENCES users(id),
+            FOREIGN KEY (course_id) REFERENCES courses(id)
+        )
+    ''')
+    conn.commit()
+    conn.close()
+

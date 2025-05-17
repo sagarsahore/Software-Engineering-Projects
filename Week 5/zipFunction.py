@@ -23,3 +23,5 @@ names = ['Alice', 'Bob', 'Chathy','David']
 grades = ['A', 'B', 'A','C','F']
 students = list(zip(ids, names, grades))
 print(students)
+students_dict = {id : {names, grades} for id, names, grades in students}
+print(students_dict)
